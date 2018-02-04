@@ -8,7 +8,6 @@
   ```
 
   - Start Backend API
-    Go to publisher folder
 
     ```shell
     cd publisher/
