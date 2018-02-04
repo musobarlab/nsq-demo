@@ -11,12 +11,13 @@ import (
 
 // HttpHandler model
 type HttpHandler struct {
+	topic     string
 	publisher pub.Publisher
 }
 
 // NewHttpHandler function for initialise *HttpHandler
-func NewHttpHandler(publisher pub.Publisher) *HttpHandler {
-	return &HttpHandler{publisher: publisher}
+func NewHttpHandler(topic string, publisher pub.Publisher) *HttpHandler {
+	return &HttpHandler{topic: topic, publisher: publisher}
 }
 
 func (h *HttpHandler) PublishMessages() http.Handler {
@@ -47,7 +48,7 @@ func (h *HttpHandler) PublishMessages() http.Handler {
 			return
 		}
 
-		err = h.publisher.Publish("wurys", b)
+		err = h.publisher.Publish(h.topic, b)
 
 		if err != nil {
 			log.Printf("Error %s", err.Error())

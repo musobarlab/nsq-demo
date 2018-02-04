@@ -12,6 +12,8 @@ import (
 	"github.com/wuriyanto48/nsq-demo/publisher/src/pub"
 )
 
+const Topic = "wurys"
+
 func main() {
 	//load environtment variables
 	err := configEnv.Load(".env")
@@ -30,7 +32,7 @@ func main() {
 
 	publisher, err := pub.NewPublisher(nsqHost, publisherConfig)
 
-	publisherHandler := handler.NewHttpHandler(publisher)
+	publisherHandler := handler.NewHttpHandler(Topic, publisher)
 
 	http.Handle("/api/send", publisherHandler.PublishMessages())
 	http.ListenAndServe(":3000", nil)
