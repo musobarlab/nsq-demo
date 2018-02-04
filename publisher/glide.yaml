@@ -1,0 +1,7 @@
+package: github.com/wuriyanto48/nsq-demo/publisher
+import:
+- package: github.com/nsqio/go-nsq
+  version: v1.0.7
+- package: github.com/golang/snappy
+- package: github.com/joho/godotenv
+  version: v1.2.0

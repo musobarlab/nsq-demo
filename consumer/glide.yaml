@@ -1,0 +1,5 @@
+package: github.com/wuriyanto48/nsq-demo/consumer
+import:
+- package: github.com/nsqio/go-nsq
+  version: v1.0.7
+- package: github.com/golang/snappy
